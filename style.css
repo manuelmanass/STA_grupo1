@@ -1,52 +1,124 @@
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background-color: #f4f4f5;
-  color: #1f2937;
-  display: flex;
-  justify-content: center;
-  padding: 3rem 1rem;
+* {
+  box-sizing: border-box;
 }
 
-main {
-  max-width: 600px;
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #1e1b4b, #0a0a1a 60%);
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 120px 80px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 300px 60px, #fff, transparent),
+    radial-gradient(2px 2px at 400px 200px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent),
+    radial-gradient(2px 2px at 600px 250px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 700px 40px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 700px 300px;
+  opacity: 0.6;
+  animation: drift 60s linear infinite;
+  z-index: 0;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: -700px 300px; }
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  width: 100%;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(129, 140, 248, 0.2);
+  color: #c7d2fe;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  margin-top: 0;
-  color: #2563eb;
+  margin: 0 0 1rem;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, #a5b4fc, #f0abfc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 p {
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #cbd5e1;
 }
 
-form {
+.signup {
   margin-top: 1.5rem;
   display: flex;
   gap: 0.5rem;
 }
 
-input[type="text"] {
+.signup input {
   flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+  font-family: inherit;
 }
 
-button {
-  padding: 0.5rem 1rem;
+.signup input::placeholder {
+  color: #94a3b8;
+}
+
+.signup input:focus {
+  outline: 2px solid #a5b4fc;
+}
+
+.signup button {
+  padding: 0.7rem 1.3rem;
   border: none;
-  border-radius: 6px;
-  background-color: #2563eb;
-  color: white;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #818cf8, #f472b6);
+  color: #0a0a1a;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 0.15s ease;
 }
 
-button:hover {
-  background-color: #1d4ed8;
+.signup button:hover {
+  transform: translateY(-2px);
+}
+
+.footer-note {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
 }
