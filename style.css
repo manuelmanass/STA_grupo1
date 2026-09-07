@@ -5,9 +5,10 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  background: radial-gradient(circle at 20% 20%, #1e1b4b, #0a0a1a 60%);
-  color: #f1f5f9;
+  font-family: "Baloo 2", system-ui, sans-serif;
+  background: linear-gradient(120deg, #ff9a9e, #fecfef, #fbc2eb, #a1c4fd, #fbc2eb, #ff9a9e);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,28 +17,75 @@ body {
   position: relative;
 }
 
-.stars {
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.blob {
   position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 120px 80px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 200px 150px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 300px 60px, #fff, transparent),
-    radial-gradient(2px 2px at 400px 200px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent),
-    radial-gradient(2px 2px at 600px 250px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 700px 40px, #fff, transparent);
-  background-repeat: repeat;
-  background-size: 700px 300px;
-  opacity: 0.6;
-  animation: drift 60s linear infinite;
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.55;
   z-index: 0;
 }
 
-@keyframes drift {
-  from { background-position: 0 0; }
-  to { background-position: -700px 300px; }
+.blob1 {
+  width: 260px;
+  height: 260px;
+  background: #ffd166;
+  top: -60px;
+  left: -60px;
+  animation: float1 8s ease-in-out infinite;
+}
+
+.blob2 {
+  width: 320px;
+  height: 320px;
+  background: #06d6a0;
+  bottom: -100px;
+  right: -80px;
+  animation: float2 10s ease-in-out infinite;
+}
+
+.blob3 {
+  width: 200px;
+  height: 200px;
+  background: #ef476f;
+  bottom: 20px;
+  left: 10%;
+  animation: float1 9s ease-in-out infinite reverse;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 40px) scale(1.1); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, -20px) scale(1.15); }
+}
+
+.emoji {
+  position: fixed;
+  font-size: 2rem;
+  z-index: 0;
+  animation: bounce 3s ease-in-out infinite;
+  user-select: none;
+}
+
+.e1 { top: 10%; left: 8%; animation-delay: 0s; }
+.e2 { top: 20%; right: 10%; animation-delay: 0.5s; }
+.e3 { bottom: 15%; left: 15%; animation-delay: 1s; }
+.e4 { bottom: 10%; right: 15%; animation-delay: 1.5s; }
+.e5 { top: 50%; left: 4%; animation-delay: 2s; }
+.e6 { top: 45%; right: 5%; animation-delay: 2.5s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(10deg); }
 }
 
 .card {
@@ -46,79 +94,72 @@ body {
   max-width: 480px;
   width: 100%;
   padding: 2.5rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   text-align: center;
-}
-
-.badge {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(129, 140, 248, 0.2);
-  color: #c7d2fe;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
 }
 
 h1 {
   margin: 0 0 1rem;
-  font-size: 2.2rem;
-  background: linear-gradient(90deg, #a5b4fc, #f0abfc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #d90368;
+}
+
+.wiggle {
+  display: inline-block;
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
 }
 
 p {
   line-height: 1.6;
-  color: #cbd5e1;
+  color: #4b3b4e;
+  font-size: 1.05rem;
 }
 
 .signup {
   margin-top: 1.5rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .signup input {
   flex: 1;
-  padding: 0.7rem 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  color: #f1f5f9;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  border: 2px solid #fbc2eb;
   font-family: inherit;
-}
-
-.signup input::placeholder {
-  color: #94a3b8;
+  font-size: 1rem;
 }
 
 .signup input:focus {
-  outline: 2px solid #a5b4fc;
+  outline: none;
+  border-color: #d90368;
 }
 
 .signup button {
-  padding: 0.7rem 1.3rem;
+  padding: 0.8rem 1.4rem;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #818cf8, #f472b6);
-  color: #0a0a1a;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #ff9a9e, #d90368);
+  color: white;
   font-weight: 700;
+  font-family: inherit;
+  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  transition: transform 0.2s ease;
 }
 
 .signup button:hover {
-  transform: translateY(-2px);
+  transform: scale(1.08) rotate(-2deg);
 }
 
-.footer-note {
-  margin-top: 1.5rem;
-  font-size: 0.8rem;
-  color: #64748b;
+.signup button:active {
+  transform: scale(0.95);
 }
