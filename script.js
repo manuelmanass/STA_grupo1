@@ -9,7 +9,7 @@ console.log("🎬 script.js cargado correctamente. ¡Que empiece la película!")
 // --- Punto 2: clave de la API de OMDb ---
 // Consíguela gratis en https://www.omdbapi.com/apikey.aspx (plan FREE)
 // y pega aquí el valor que te llegue por correo.
-const API_KEY = "PON_AQUI_TU_API_KEY";
+const API_KEY = "8adf8e63";
 const API_URL = "https://www.omdbapi.com/";
 
 // --- Referencias a los elementos del DOM ---
